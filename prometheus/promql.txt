@@ -1,0 +1,29 @@
+# number of available nodes
+up
+
+# incoming records / sec / host
+sum(rate(fluentd_output_status_emit_count[5m])) by (hostname)
+
+# incoming records / sec / tag
+sum(rate(fluentd_output_status_emit_count[5m])) by (tag)
+
+# outgoing records / sec / host
+sum(rate(fluentd_output_status_num_records_total[1m])) by (hostname)
+
+# outgoing records / sec / tag
+sum(rate(fluentd_output_status_num_records_total[1m])) by (tag)
+
+# emit count / sec
+rate(fluentd_output_status_emit_count[1m])
+
+# maximum buffer length in last 1min
+max_over_time(fluentd_output_status_buffer_queue_length[1m])
+
+# maximum buffer bytes in last 1min
+max_over_time(fluentd_output_status_buffer_total_bytes[1m])
+
+# maximum retry wait in last 1min
+max_over_time(fluentd_output_status_retry_wait[1m])
+
+# retry count / sec
+rate(fluentd_output_status_retry_count[1m])
